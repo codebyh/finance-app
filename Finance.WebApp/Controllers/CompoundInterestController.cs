@@ -1,4 +1,5 @@
-﻿using Finance.WebApp.Models;
+﻿using Finance.WebApp.Calculations;
+using Finance.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -28,8 +29,7 @@ namespace Finance.WebApp.Controllers
         [HttpPost]
         public double Post([FromBody] CompoundInterestCalculatorInput payload)
         {
-            double compoundInterest = payload.InitialInvestment * Math.Pow(1 + payload.EstimatedInterestRate/100, payload.LengthOfTimeInYears);
-            return compoundInterest;
+            return new CompoundInterestCalculator().Calculate(payload);
         }
 
         // PUT api/<ValuesController>/5
