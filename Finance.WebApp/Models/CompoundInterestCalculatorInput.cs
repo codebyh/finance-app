@@ -1,6 +1,6 @@
 ﻿namespace Finance.WebApp.Models
 {
-    public class CompoundInterestCalculator
+    public class CompoundInterestCalculatorInput
     {
         public double InitialInvestment { get; set; }
         public double MonthlyContribution { get; set; }

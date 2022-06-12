@@ -26,7 +26,7 @@ namespace Finance.WebApp.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public double Post([FromBody] CompoundInterestCalculator payload)
+        public double Post([FromBody] CompoundInterestCalculatorInput payload)
         {
             double compoundInterest = payload.InitialInvestment * Math.Pow(1 + payload.EstimatedInterestRate/100, payload.LengthOfTimeInYears);
             return compoundInterest;
