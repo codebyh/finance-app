@@ -2,10 +2,10 @@
 {
     public enum TimeFrequency
     {
-        Annually,
-        Semiannually,
-        Quaterly,
-        Monthly,
-        Daily,
+        Annually = 1,
+        Semiannually = 2,
+        Quaterly = 4,
+        Monthly = 12,
+        Daily = 365,
     }
 }
