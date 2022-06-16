@@ -27,7 +27,7 @@
         [HttpPost]
         public double Post([FromBody] CompoundInterestCalculatorInput payload)
         {
-            return new CompoundInterestCalculator().Calculate(payload);
+            return CompoundInterestCalculator.Calculate(payload);
         }
 
         // PUT api/<ValuesController>/5
