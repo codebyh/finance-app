@@ -3,7 +3,7 @@
     using Finance.WebApp.Models;
     using Finance.WebApp.Utils;
 
-    public static class CompoundInterestCalculator
+    public static class CompoundInterestService
     {
         public static double Calculate(CompoundInterestCalculatorInput input)
         {

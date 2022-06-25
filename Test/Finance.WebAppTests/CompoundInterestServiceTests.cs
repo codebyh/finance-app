@@ -6,7 +6,7 @@ namespace Finance.WebAppTests
     using Xunit;
 
 
-    public class CompoundInterestCalculatorTest
+    public class CompoundInterestServiceTests
     {
         [Theory]
         [InlineData(TimeFrequency.Annually, 43_427.37)]
@@ -26,7 +26,7 @@ namespace Finance.WebAppTests
                 CompoundFrequency = timeFrequency,
             };
 
-            CompoundInterestCalculator.Calculate(input).Should().Be(expectedValue);
+            CompoundInterestService.Calculate(input).Should().Be(expectedValue);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Finance.WebAppTests
                 CompoundFrequency = TimeFrequency.Annually,
             };
 
-            var interestResultList = CompoundInterestCalculator.CalculateYearly(input);
+            var interestResultList = CompoundInterestService.CalculateYearly(input);
             interestResultList.Count.Should().Be(input.LengthOfTimeInYears);
             interestResultList[0].Should().Be(10_850.71);
             interestResultList[1].Should().Be(11_773.02);
@@ -50,7 +50,7 @@ namespace Finance.WebAppTests
             interestResultList[3].Should().Be(13_859.49);
             interestResultList[4].Should().Be(15_037.54);
 
-            CompoundInterestCalculator.Calculate(input).Should().Be(interestResultList[4]);
+            CompoundInterestService.Calculate(input).Should().Be(interestResultList[4]);
         }
     }
 }
