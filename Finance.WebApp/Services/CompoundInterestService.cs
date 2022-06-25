@@ -40,10 +40,5 @@
             return compoundInterest;
         }
 
-        static double RoundToTwoDigits(this double amount)
-        {
-            // round decimal to 2 digits
-            return Math.Round(amount, digits: 2);
-        }
     }
 }
