@@ -2,12 +2,28 @@
 {
     public class TaxYear2022 : TaxYear
     {
-        public override double GetStandardDeduction()
+        const int MarriedFilingJointlyStandardDeduction = 25_900;
+        const int SingleStandardDeduction = 12_950;
+        const int MarriedFilingSeparatelyStandardDeduction = 12_950;
+        const int HeadOfHouseholdStandardDeduction = 19_400;
+
+        public TaxableIncomeInfo GetTaxInfoByFilingStaus(TaxFilingStatus taxFilingStatus)
         {
-            return 25_900;
+            switch (taxFilingStatus)
+            {
+                case TaxFilingStatus.MarriedFilingJointly:
+                    return new TaxableIncomeInfo
+                    {
+                        StandardDeduction = MarriedFilingJointlyStandardDeduction,
+                        TaxFilingStatus = TaxFilingStatus.MarriedFilingJointly,
+                        TaxBrackets = MarriedFilingJointlyTaxBrackets(),
+                    };
+                default:
+                    throw new NotImplementedException("Tax Filing Status not supported");
+            }
         }
 
-        public override TaxBracket[] GetMarriedFilingJointlyTaxBrackets()
+        TaxBracket[] MarriedFilingJointlyTaxBrackets()
         {
             return new TaxBracket[] {
                 new TaxBracket { TaxableIncomeMin =       0, TaxableIncomeMax =  20_550,         TaxRate = 0.10 },
@@ -19,5 +35,6 @@
                 new TaxBracket { TaxableIncomeMin = 647_851, TaxableIncomeMax = double.MaxValue, TaxRate = 0.37 },
             };
         }
+
     }
 }

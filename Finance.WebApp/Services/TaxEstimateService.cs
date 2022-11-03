@@ -7,6 +7,7 @@
     {
         public double Calculate(int year, TaxFilingStatus filingStatus, double income)
         {
+            int defaultYear = TaxConstants.TaxYear2022;
             switch (filingStatus)
             {
                 case TaxFilingStatus.MarriedFilingJointly:
@@ -18,13 +19,13 @@
 
         double CaclulateTaxAmount(int year, TaxFilingStatus filingStatus, double income)
         {
-            TaxYear taxYear = GetTaxYear(year);
+            TaxableIncomeInfo taxableIncomeInfo = GetTaxYear(year).GetTaxInfoByFilingStaus(filingStatus);
 
             // Perform Adjestments
-            income = income - taxYear.GetStandardDeduction();
+            income = income - taxableIncomeInfo.StandardDeduction;
 
             double accumulatedTaxAmount = 0;
-            foreach (var taxBracket in GetTaxBracketsByFilingStatus(taxYear, filingStatus))
+            foreach (var taxBracket in taxableIncomeInfo.TaxBrackets)
             {
                 if (income > taxBracket.TaxableIncomeMin)
                 {
@@ -54,15 +55,5 @@
             }
         }
 
-        TaxBracket[] GetTaxBracketsByFilingStatus(TaxYear taxYear, TaxFilingStatus filingStatus)
-        {
-            switch (filingStatus)
-            {
-                case TaxFilingStatus.MarriedFilingJointly:
-                    return taxYear.GetMarriedFilingJointlyTaxBrackets();
-                default:
-                    throw new NotImplementedException("Tax Filing Status not supported");
-            }
-        }
     }
 }

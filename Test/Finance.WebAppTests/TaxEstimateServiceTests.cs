@@ -10,12 +10,17 @@ namespace Finance.WebAppTests
     public class TaxEstimateServiceTests
     {
 
-        [Fact]
-        public void CalculateYearlyTest()
+        [Theory]
+        [InlineData(2022, 25_900, 0)] // standard deduction
+        [InlineData(2022, 25_901, 0.1)] // 10% tax bracket ($0 – $20,550)
+        [InlineData(2022, 58_235, 0)] 
+        [InlineData(2022, 46_450, 0)]
+        // [InlineData(2022, 83_550, 0)] // 
+        public void CalculateMarriedFilingJointlyTest(int year, double income, double expectedTaxAmount)
         {
-            var taxAmount = new TaxEstimateService().Calculate(2022, TaxFilingStatus.MarriedFilingJointly, 100_000);
+            var taxAmount = new TaxEstimateService().Calculate(year, TaxFilingStatus.MarriedFilingJointly, income);
 
-            taxAmount.Should().Be(8_480.88);
+            taxAmount.Should().Be(expectedTaxAmount);
         }
     }
 }

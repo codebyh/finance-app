@@ -1,9 +1,8 @@
 ﻿namespace Finance.WebApp.Models.Tax
 {
-    public abstract class TaxYear
+    public interface TaxYear
     {
-        public abstract TaxBracket[] GetMarriedFilingJointlyTaxBrackets();
-        public abstract double GetStandardDeduction();
+        public TaxableIncomeInfo GetTaxInfoByFilingStaus(TaxFilingStatus taxFilingStatus);
     }
 
 }
