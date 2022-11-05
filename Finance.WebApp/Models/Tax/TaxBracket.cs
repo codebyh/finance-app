@@ -2,8 +2,9 @@
 {
     public class TaxBracket
     {
-        public double TaxableIncomeMin { get; set; }
-        public double TaxableIncomeMax { get; set; }
+        public double LowerBracketAmount { get; set; }
+        public double UpperBracketAmount { get; set; }
         public double TaxRate { get; set; }
+        public double TaxAmount { get; set; }
     }
 }

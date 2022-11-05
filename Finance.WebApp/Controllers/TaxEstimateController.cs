@@ -17,7 +17,7 @@ namespace Finance.WebApp.Controllers
         }
 
         [HttpPost(Name = "TaxEstimate")]
-        public double Post([FromBody] TaxEstimateInput payload)
+        public TaxEstimateSummary Post([FromBody] TaxEstimateInput payload)
         {
             return new TaxEstimateService().Calculate(2022, payload.FilingStatus, payload.Income);
         }

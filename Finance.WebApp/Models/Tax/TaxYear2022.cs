@@ -26,13 +26,13 @@
         TaxBracket[] MarriedFilingJointlyTaxBrackets()
         {
             return new TaxBracket[] {
-                new TaxBracket { TaxableIncomeMin =       0, TaxableIncomeMax =  20_550,         TaxRate = 0.10 },
-                new TaxBracket { TaxableIncomeMin =  20_551, TaxableIncomeMax =  83_550,         TaxRate = 0.12 },
-                new TaxBracket { TaxableIncomeMin =  83_551, TaxableIncomeMax = 178_150,         TaxRate = 0.22 },
-                new TaxBracket { TaxableIncomeMin = 178_151, TaxableIncomeMax = 340_100,         TaxRate = 0.24 },
-                new TaxBracket { TaxableIncomeMin = 340_101, TaxableIncomeMax = 431_900,         TaxRate = 0.32 },
-                new TaxBracket { TaxableIncomeMin = 431_901, TaxableIncomeMax = 647_850,         TaxRate = 0.35 },
-                new TaxBracket { TaxableIncomeMin = 647_851, TaxableIncomeMax = double.MaxValue, TaxRate = 0.37 },
+                new TaxBracket { LowerBracketAmount =       0, UpperBracketAmount =  20_550,         TaxRate = 0.10 },
+                new TaxBracket { LowerBracketAmount =  20_550, UpperBracketAmount =  83_550,         TaxRate = 0.12 },
+                new TaxBracket { LowerBracketAmount =  83_550, UpperBracketAmount = 178_150,         TaxRate = 0.22 },
+                new TaxBracket { LowerBracketAmount = 178_150, UpperBracketAmount = 340_100,         TaxRate = 0.24 },
+                new TaxBracket { LowerBracketAmount = 340_100, UpperBracketAmount = 431_900,         TaxRate = 0.32 },
+                new TaxBracket { LowerBracketAmount = 431_900, UpperBracketAmount = 647_850,         TaxRate = 0.35 },
+                new TaxBracket { LowerBracketAmount = 647_850, UpperBracketAmount = double.MaxValue, TaxRate = 0.37 },
             };
         }
 
