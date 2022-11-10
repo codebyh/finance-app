@@ -5,7 +5,12 @@
       "ProjectGuid": "5f9e04d1-f8bc-4148-9f6e-d69a7b220707",
       "DisplayName": "Finance.WebApp",
       "ColorIndex": 0
+    },
+    "6823d92e-6177-49d8-b8e2-64ce7a11ce42": {
+      "ProjectGuid": "6823d92e-6177-49d8-b8e2-64ce7a11ce42",
+      "DisplayName": "Finance.WebAppTests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
