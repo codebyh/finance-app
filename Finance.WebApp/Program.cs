@@ -22,4 +22,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.Logger.LogInformation("Starting the app");
 app.Run();

@@ -1,13 +1,17 @@
 ﻿namespace Finance.WebApp.Services
 {
+    using Finance.WebApp.Common;
     using Finance.WebApp.Models.Tax;
     using Finance.WebApp.Utils;
+    using Newtonsoft.Json;
 
     public class TaxEstimateService
     {
-        public TaxEstimateService()
+        private readonly ILogger logger;
+
+        public TaxEstimateService(ILoggerFactory logger)
         {
-            // TODO: Add logging and metrics
+            this.logger = logger.CreateLogger(nameof(TaxEstimateService));
         }
 
         public TaxEstimateSummary Calculate(int year, TaxFilingStatus filingStatus, double income)
@@ -24,6 +28,7 @@
 
         TaxEstimateSummary CaclulateTax(int year, TaxFilingStatus filingStatus, double income)
         {
+            this.logger.LogInformation(LogEvents.GetTaxItems, $"Tax year: {year}, tax filing status: {filingStatus}, income: {income}");
             TaxableIncomeInfo taxableIncomeInfo = GetTaxYear(year).GetTaxInfoByFilingStaus(filingStatus);
 
             TaxEstimateSummary taxReturnSummary = new TaxEstimateSummary();
@@ -62,6 +67,7 @@
             }
 
             taxReturnSummary.TotalTaxAmount = totalTaxAmount;
+            this.logger.LogInformation(LogEvents.GetTaxItems, $"Tax return summary: {JsonConvert.SerializeObject(taxReturnSummary)}");
             return taxReturnSummary;
         }
 
