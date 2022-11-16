@@ -4,6 +4,8 @@ namespace Finance.WebAppTests
     using Finance.WebApp.Models.Tax;
     using Finance.WebApp.Services;
     using FluentAssertions;
+    using Microsoft.Extensions.Logging;
+    using Moq;
     using Xunit;
 
 
@@ -16,7 +18,9 @@ namespace Finance.WebAppTests
         [InlineData(2022, 60_000, 3_681)] // irs = 3,684
         public void CalculateMarriedFilingJointlyTest(int year, double income, double expectedTaxAmount)
         {
-            TaxEstimateSummary taxReturnSummary = new TaxEstimateService().Calculate(year, TaxFilingStatus.MarriedFilingJointly, income);
+            var loggerFactory = new Mock<ILoggerFactory>();
+            loggerFactory.Setup(x => x.CreateLogger(It.IsAny<string>())).Returns(new Mock<ILogger>().Object);
+            TaxEstimateSummary taxReturnSummary = new TaxEstimateService(loggerFactory.Object).Calculate(year, TaxFilingStatus.MarriedFilingJointly, income);
 
             taxReturnSummary.TotalTaxAmount.Should().Be(expectedTaxAmount);
         }
