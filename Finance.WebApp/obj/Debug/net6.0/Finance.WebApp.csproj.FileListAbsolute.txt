@@ -34,3 +34,4 @@ C:\Users\avula\git-repo\finance-app\Finance.WebApp\obj\Debug\net6.0\Finance.WebA
 C:\Users\avula\git-repo\finance-app\Finance.WebApp\obj\Debug\net6.0\ref\Finance.WebApp.dll
 C:\Users\avula\git-repo\finance-app\Finance.WebApp\obj\Debug\net6.0\Finance.WebApp.pdb
 C:\Users\avula\git-repo\finance-app\Finance.WebApp\obj\Debug\net6.0\Finance.WebApp.genruntimeconfig.cache
+C:\Users\avula\git-repo\finance-app\Finance.WebApp\obj\Debug\net6.0\Finance.WebApp.csproj.AssemblyReference.cache
